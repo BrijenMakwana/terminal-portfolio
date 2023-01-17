@@ -5,8 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link href="./styles.css" rel="stylesheet" />
-    <script src="./app.js" async defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="main-container">
+      <div id="input-container">
+        <label for="command" class="input-label">></label>
+        <input type="text" name="command" id="command" />
+      </div>
+      <div id="command-result"></div>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
 </html>
