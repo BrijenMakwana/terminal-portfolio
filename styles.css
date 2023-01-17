@@ -16,12 +16,12 @@ body {
   padding: 20px;
 }
 
-div.command-result {
+.command-result {
   margin: 15px 0;
   padding-left: 20px;
 }
 
-#input-container {
+.input-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,7 +31,7 @@ div.command-result {
   color: #fbcb0a;
 }
 
-#command {
+.input-command {
   width: 100%;
   padding: 10px 0;
   border: none;
@@ -41,6 +41,10 @@ div.command-result {
   font-weight: 400;
   font-size: 16px;
   margin-left: 10px;
+}
+
+.input-text {
+  color: #00ffab;
 }
 
 .command-not-found {

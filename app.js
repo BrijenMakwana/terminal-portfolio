@@ -1,23 +1,32 @@
 import { whoami, help } from "./commands.js";
 
 const command = document.getElementById("command");
-const commandResult = document.getElementById("command-result");
-const inputContainer = document.getElementById("input-container");
+const commandResults = document.getElementById("command-results");
+
+document.addEventListener("click", () => command.focus());
 
 command.addEventListener("keydown", (e) => {
+  const userInput = e.target.value;
+
   if (e.which == 13) {
-    switch (e.target.value) {
+    const typedCommand = `<div class="input-container">
+        <span class="input-label">></span>
+        <span class="input-command">${userInput}</span>
+      </div>`;
+    commandResults.innerHTML += typedCommand;
+    switch (userInput.toLowerCase()) {
       case "help":
-        commandResult.innerHTML += help;
+        commandResults.innerHTML += help;
         break;
       case "whoami":
-        commandResult.innerHTML += whoami;
+        commandResults.innerHTML += whoami;
         break;
       case "clear":
-        commandResult.innerHTML = "";
+        commandResults.innerHTML = "";
         break;
       default:
-        commandResult.innerHTML += `<div class="command-result"><span class="command-not-found">${e.target.value}</span>: command not found. Type 'help' to view a list of available commands.</div>`;
+        commandResults.innerHTML += `<div class="command-result"><span class="command-not-found">${e.target.value}</span>: command not found. Type 'help' to view a list of available commands.</div>`;
     }
+    e.target.value = "";
   }
 });

@@ -15,11 +15,18 @@
   </head>
   <body>
     <div class="main-container">
-      <div id="input-container">
-        <label for="command" class="input-label">></label>
-        <input type="text" name="command" id="command" />
+      <div id="command-results">
+        <!-- all the command results goes here -->
       </div>
-      <div id="command-result"></div>
+      <div class="input-container">
+        <label for="command" class="input-label">></label>
+        <input
+          type="text"
+          name="command"
+          id="command"
+          class="input-command input-text"
+        />
+      </div>
     </div>
     <script type="module" src="./app.js"></script>
   </body>
