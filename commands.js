@@ -56,4 +56,9 @@ profession.forEach((who) => {
 
 whoami += "</div>";
 
-export { help, whoami };
+// about command
+const about = `<div class="command-result"><p class="about-text">
+I'm a Software Developer always looking to build useful project that can help people and solve meaningful problems.<br>
+I Love building mobile and web applications. React Native and React are my first choice to create applications. I have multiple web apps live on the internet and many apps published on Play Store. I have been creating YouTube videos on ProgrammingKnowledge channel since 2018. I also like writing and have contributed multiple articles on GeeksForGeeks. As a content mentor at GeekForGeeks, I create video tutorials on the platform as well.</p></div>`;
+
+export { help, whoami, about };

@@ -1,4 +1,4 @@
-import { whoami, help } from "./commands.js";
+import { whoami, help, about } from "./commands.js";
 
 const command = document.getElementById("command");
 const commandResults = document.getElementById("command-results");
@@ -20,6 +20,9 @@ command.addEventListener("keydown", (e) => {
         break;
       case "whoami":
         commandResults.innerHTML += whoami;
+        break;
+      case "about":
+        commandResults.innerHTML += about;
         break;
       case "clear":
         commandResults.innerHTML = "";

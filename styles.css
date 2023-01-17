@@ -3,12 +3,14 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "IBM Plex Mono", monospace;
+  cursor: text;
 }
 
 body {
   background-color: #2c3539;
   color: #d3d3d3;
   font-size: 16px;
+  font-weight: 300;
 }
 
 .main-container {
@@ -59,7 +61,6 @@ body {
   text-transform: lowercase;
 }
 .command-dd {
-  font-weight: 300;
   margin-top: 5px;
   margin-left: 20px;
 }
@@ -67,7 +68,9 @@ body {
 .whoami-li {
   text-transform: capitalize;
   list-style-type: square;
+  font-weight: 400;
 }
 
 .about-text {
+  font-weight: 400;
 }
