@@ -1,4 +1,11 @@
-import { whoami, help, about, skills, projects } from "./commands.js";
+import {
+  whoami,
+  help,
+  about,
+  skills,
+  projects,
+  achievements,
+} from "./commands.js";
 
 const command = document.getElementById("command");
 const commandResults = document.getElementById("command-results");
@@ -29,6 +36,9 @@ command.addEventListener("keydown", (e) => {
         break;
       case "projects":
         commandResults.innerHTML += projects;
+        break;
+      case "achievements":
+        commandResults.innerHTML += achievements;
         break;
       case "clear":
         commandResults.innerHTML = "";

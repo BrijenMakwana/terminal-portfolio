@@ -126,13 +126,44 @@ const myProjects = [
   },
 ];
 
-let projects = `<div class="command-result"><table class="projects-table">`;
+let projects = `<div class="command-result"><table class="data-table">`;
 myProjects.forEach((project) => {
   projects += `<tr>
-    <th class="project-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="project-link project-name">${project.projectName}</a></th>
-    <td class="project-description-td"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="project-link">${project.projectDescription}</a></td>
+    <th class="data-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link project-name">${project.projectName}</a></th>
+    <td class="data-description-td"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link">${project.projectDescription}</a></td>
   </tr>`;
 });
 projects += "</table></div>";
 
-export { help, whoami, about, skills, projects };
+// achievements command
+const myAchievements = [
+  {
+    id: 1,
+    achievementName: "YouTube Content Creator",
+    achievementDescription:
+      "I have been teaching programming on YouTube channel ProgrammingKnowledge. The channel has more than 1.5M subscribers and I have contributed 100+ learning videos till now. With all that combined, this playlists have lakhs of views.",
+  },
+  {
+    id: 2,
+    achievementName: "Technical Content Writer at GeeksforGeeks",
+    achievementDescription:
+      "I have multiple articles published on GeeksforGeeks. This articles have been proven very useful for many software developers.",
+  },
+  {
+    id: 3,
+    achievementName: "Author of the Book React Hooks 101",
+    achievementDescription:
+      "Read my book React Hooks 101, available on Amazon 📕. It's available as a paperback and as a ebook also on Kindle.",
+  },
+];
+
+let achievements = `<div class="command-result"><table class="data-table">`;
+myAchievements.forEach((achievement) => {
+  achievements += `<tr>
+    <th class="data-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link project-name">${achievement.achievementName}</a></th>
+    <td class="data-description-td"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link">${achievement.achievementDescription}</a></td>
+  </tr>`;
+});
+achievements += "</table></div>";
+
+export { help, whoami, about, skills, projects, achievements };
