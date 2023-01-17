@@ -51,7 +51,7 @@ const profession = [
 
 let whoami = `<div class="command-result">`;
 profession.forEach((who) => {
-  whoami += `<li class="whoami-li">${who}</li>`;
+  whoami += `<li class="data-li">${who}</li>`;
 });
 
 whoami += "</div>";
@@ -61,4 +61,29 @@ const about = `<div class="command-result"><p class="about-text">
 I'm a Software Developer always looking to build useful project that can help people and solve meaningful problems.<br>
 I Love building mobile and web applications. React Native and React are my first choice to create applications. I have multiple web apps live on the internet and many apps published on Play Store. I have been creating YouTube videos on ProgrammingKnowledge channel since 2018. I also like writing and have contributed multiple articles on GeeksForGeeks. As a content mentor at GeekForGeeks, I create video tutorials on the platform as well.</p></div>`;
 
-export { help, whoami, about };
+// skills command
+const mySkills = [
+  "React Native",
+  "React JS",
+  "Javascript",
+  "Typescript",
+  "Redux",
+  "HTML5",
+  "CSS3",
+  "Node.js",
+  "GraphQL",
+  "mongoDB",
+  "Sanity",
+  "Figma",
+  "git",
+  "Firebase",
+];
+
+let skills = `<div class="command-result">`;
+mySkills.forEach((skill) => {
+  skills += `<li class="data-li">${skill}</li>`;
+});
+
+skills += "</div>";
+
+export { help, whoami, about, skills };
