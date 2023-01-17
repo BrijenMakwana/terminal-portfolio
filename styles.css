@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "IBM Plex Mono", monospace;
-  cursor: text;
+  /* cursor: text; */
 }
 
 body {
@@ -59,6 +59,7 @@ body {
   font-weight: 600;
   margin-top: 10px;
   text-transform: lowercase;
+  color: #fbcb0a;
 }
 .command-dd {
   margin-top: 5px;
@@ -73,4 +74,37 @@ body {
 
 .about-text {
   font-weight: 400;
+}
+
+.projects-table {
+  border-collapse: collapse;
+  color: #fff;
+}
+
+tr:hover {
+  background-color: #fbcb0a;
+  cursor: pointer;
+}
+
+tr:hover .project-link {
+  color: #2c3539;
+}
+
+.project-name-th {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.project-description-td {
+  padding: 10px 0;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.project-name {
+  color: #fbcb0a;
+  text-transform: capitalize;
 }
