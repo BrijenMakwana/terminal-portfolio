@@ -5,6 +5,8 @@ import {
   skills,
   projects,
   achievements,
+  myWebsite,
+  website,
 } from "./commands.js";
 
 const command = document.getElementById("command");
@@ -41,6 +43,15 @@ command.addEventListener("keydown", (e) => {
         break;
       case "achievements":
         commandResults.innerHTML += achievements;
+        break;
+      case "website":
+        commandResults.innerHTML += website;
+        setTimeout(() => {
+          const anchor = document.createElement("a");
+          anchor.href = myWebsite;
+          anchor.target = "_blank";
+          anchor.click();
+        }, 2000);
         break;
       case "clear":
         commandResults.innerHTML = "";

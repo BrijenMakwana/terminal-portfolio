@@ -166,4 +166,17 @@ myAchievements.forEach((achievement) => {
 });
 achievements += "</table></div>";
 
-export { help, whoami, about, skills, projects, achievements };
+// website command
+const myWebsite = "https://brijenmakwana.vercel.app";
+const website = `<div class="command-result">Redirecting you to my portfolio website <a href="${myWebsite}" target="_blank" class="data-link">${myWebsite}</a> ...</div>`;
+
+export {
+  help,
+  whoami,
+  about,
+  skills,
+  projects,
+  achievements,
+  myWebsite,
+  website,
+};
