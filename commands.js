@@ -129,8 +129,8 @@ const myProjects = [
 let projects = `<div class="command-result"><table class="data-table">`;
 myProjects.forEach((project) => {
   projects += `<tr>
-    <th class="data-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link project-name">${project.projectName}</a></th>
-    <td class="data-description-td"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link">${project.projectDescription}</a></td>
+    <th class="data-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link">${project.projectName}</a></th>
+    <td class="data-description-td">${project.projectDescription}</td>
   </tr>`;
 });
 projects += "</table></div>";
@@ -160,8 +160,8 @@ const myAchievements = [
 let achievements = `<div class="command-result"><table class="data-table">`;
 myAchievements.forEach((achievement) => {
   achievements += `<tr>
-    <th class="data-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link project-name">${achievement.achievementName}</a></th>
-    <td class="data-description-td"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link">${achievement.achievementDescription}</a></td>
+    <th class="data-name-th"><a href="https://github.com/BrijenMakwana/terminal-portfolio" target="_blank" class="data-link">${achievement.achievementName}</a></th>
+    <td class="data-description-td">${achievement.achievementDescription}</td>
   </tr>`;
 });
 achievements += "</table></div>";

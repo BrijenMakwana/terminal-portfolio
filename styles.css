@@ -81,31 +81,16 @@ body {
   color: #fff;
 }
 
-tr:hover {
-  background-color: #fbcb0a;
-  cursor: pointer;
-}
-
-tr:hover .data-link {
-  color: #2c3539;
-}
-
 .data-name-th {
   text-align: left;
-  padding: 10px 0 10px 10px;
+  padding: 10px 0;
 }
 
 .data-description-td {
-  vertical-align: top;
   padding: 10px 0;
 }
 
 .data-link {
-  text-decoration: none;
-  color: #fff;
-}
-
-.project-name {
+  text-decoration-style: solid;
   color: #fbcb0a;
-  text-transform: capitalize;
 }

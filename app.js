@@ -13,14 +13,16 @@ const commandResults = document.getElementById("command-results");
 document.addEventListener("click", () => command.focus());
 
 command.addEventListener("keydown", (e) => {
-  const userInput = e.target.value;
-
   if (e.which == 13) {
+    const userInput = e.target.value;
+
     const typedCommand = `<div class="input-container">
         <span class="input-label">></span>
         <span class="input-command">${userInput}</span>
       </div>`;
+
     commandResults.innerHTML += typedCommand;
+
     switch (userInput.toLowerCase()) {
       case "help":
         commandResults.innerHTML += help;
