@@ -170,6 +170,28 @@ achievements += "</table></div>";
 const myWebsite = "https://brijenmakwana.vercel.app";
 const website = `<div class="command-result">Redirecting you to my portfolio website <a href="${myWebsite}" target="_blank" class="data-link">${myWebsite}</a> ...</div>`;
 
+// contact command
+const myContacts = [
+  {
+    contactTitle: "email",
+    contactPlace: "brijenma@gmail.com",
+  },
+  {
+    contactTitle: "instagram",
+    contactPlace: "I am not dependent on the approval of others.",
+  },
+  {
+    contactTitle: "twitter",
+    contactPlace: "No time to meddle in other people's lives",
+  },
+];
+
+let contact = `<div class="command-result"><dl>`;
+myContacts.forEach((item) => {
+  contact += `<dt class="command-dt">${item.contactTitle}<dt><dd class="command-dd"> - ${item.contactPlace}</dd>`;
+});
+contact += "</dl></div>";
+
 export {
   help,
   whoami,
@@ -179,4 +201,5 @@ export {
   achievements,
   myWebsite,
   website,
+  contact,
 };

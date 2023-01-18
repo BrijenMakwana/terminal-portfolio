@@ -83,11 +83,12 @@ body {
 
 .data-name-th {
   text-align: left;
-  padding: 10px 0;
+  padding-bottom: 20px;
 }
 
 .data-description-td {
-  padding: 10px 0;
+  padding-bottom: 20px;
+  vertical-align: top;
 }
 
 .data-link {
