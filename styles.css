@@ -54,14 +54,14 @@ body {
   color: #ff0032;
 }
 
-.command-dt {
+.data-dt {
   font-size: 17px;
   font-weight: 600;
   margin-top: 10px;
   text-transform: lowercase;
   color: #fbcb0a;
 }
-.command-dd {
+.data-dd {
   margin-top: 5px;
   margin-left: 20px;
 }
