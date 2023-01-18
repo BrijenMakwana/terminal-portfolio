@@ -1,3 +1,14 @@
+const portfolioAPI =
+  "https://gzsq4ssh.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D%22personal%22%5D%7B%0A%20%20AboutMeText%2C%0A%20%20position%2C%0A%20%20email%2C%0A%20%20%22projects%22%3A%20*%5B_type%3D%3D%22projects%22%5D%7B%0A%20%20title%2C%0A%20%20description%2C%0A%20%20url%0A%7D%2C%0A%22skills%22%3A*%5B_type%3D%3D%22skills%22%5D%7B%0A%20%20title%0A%7D%2C%20%0A%22achievements%22%3A%20*%5B_type%3D%3D%22achievements%22%5D%7B%0A%20%20title%2C%0A%20%20description%2C%0A%20%20url%0A%7D%2C%0A%7D";
+
+let positions;
+fetch(portfolioAPI)
+  .then((data) => data.json())
+  .then((outcome) => {
+    positions = outcome.result[0].position.split(".");
+  })
+  .catch(() => alert("Please try again....."));
+
 // help command
 const availableCommands = [
   {
