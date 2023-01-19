@@ -106,6 +106,10 @@ const availableCommands = [
     command: "clear",
     description: "Clears the terminal of all output",
   },
+  {
+    command: "cmd/ctrl + k",
+    description: "Keyboard shortcut to clear the terminal",
+  },
 ];
 
 let help = `<div class="command-result"><dl>`;

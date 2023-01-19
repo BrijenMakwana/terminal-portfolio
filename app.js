@@ -72,18 +72,29 @@ command.addEventListener("keydown", (e) => {
         addToCommandHistory(userInput);
         break;
       case "clear":
-        commandResults.innerHTML = "";
+        emptyTerminal();
         addToCommandHistory(userInput);
         break;
       default:
         commandResults.innerHTML += `<div class="command-result"><span class="command-not-found">${e.target.value}</span>: command not found. Type 'help' to view a list of available commands.</div>`;
     }
-    historyIndex = commandHistory.length;
+    resetHistoryIndex();
     e.target.value = "";
     window.scrollTo(0, document.body.scrollHeight);
+  } else if ((e.metaKey || e.ctrlKey) && e.which == 75) {
+    resetHistoryIndex();
+    emptyTerminal();
   }
 });
 
 const addToCommandHistory = (userCommand) => {
   commandHistory.push(userCommand);
+};
+
+const resetHistoryIndex = () => {
+  historyIndex = commandHistory.length;
+};
+
+const emptyTerminal = () => {
+  commandResults.innerHTML = "";
 };
