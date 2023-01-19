@@ -6,6 +6,11 @@
   /* cursor: text; */
 }
 
+*::selection {
+  background-color: #00ffab;
+  color: #2c3539;
+}
+
 body {
   background-color: #2c3539;
   color: #d3d3d3;
