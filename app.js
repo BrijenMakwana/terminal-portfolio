@@ -15,6 +15,8 @@ const commandResults = document.getElementById("command-results");
 const commandHistory = [];
 let historyIndex = 0;
 
+document.addEventListener("keydown", () => command.focus());
+
 command.addEventListener("keydown", (e) => {
   if (e.which == 38 && historyIndex > 0) {
     historyIndex--;
@@ -32,7 +34,7 @@ command.addEventListener("keydown", (e) => {
 
     commandResults.innerHTML += typedCommand;
 
-    switch (userInput.toLowerCase()) {
+    switch (userInput.trim().toLowerCase()) {
       case "help":
         commandResults.innerHTML += help;
         addToCommandHistory(userInput);

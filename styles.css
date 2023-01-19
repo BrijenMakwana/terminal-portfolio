@@ -3,7 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "IBM Plex Mono", monospace;
-  /* cursor: text; */
+  cursor: text;
 }
 
 *::selection {
@@ -120,4 +120,5 @@ body {
 .data-link {
   text-decoration-style: solid;
   color: #fbcb0a;
+  cursor: pointer;
 }
