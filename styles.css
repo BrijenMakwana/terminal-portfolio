@@ -26,9 +26,7 @@ body {
 .ascii-name {
   color: #fbcb0a;
   font-size: 0.7vw;
-}
-
-.introduction {
+  margin-top: 15px;
 }
 
 .message-text {
