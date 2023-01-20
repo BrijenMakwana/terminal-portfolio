@@ -56,6 +56,10 @@ fetch(portfolioAPI)
         contactPlace: outcome.result[0].email,
       },
       {
+        contactTitle: "github",
+        contactPlace: "@BrijenMakwana",
+      },
+      {
         contactTitle: "instagram",
         contactPlace: "I am not dependent on the approval of others.",
       },
