@@ -1,5 +1,5 @@
 const portfolioAPI =
-  "https://gzsq4ssh.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D%22personal%22%5D%7B%0A%20%20AboutMeText%2C%0A%20%20position%2C%0A%20%20email%2C%0A%20%20%22projects%22%3A%20*%5B_type%3D%3D%22projects%22%5D%7B%0A%20%20title%2C%0A%20%20description%2C%0A%20%20url%0A%7D%2C%0A%22skills%22%3A*%5B_type%3D%3D%22skills%22%5D%7B%0A%20%20title%0A%7D%2C%20%0A%22achievements%22%3A%20*%5B_type%3D%3D%22achievements%22%5D%7B%0A%20%20title%2C%0A%20%20description%2C%0A%20%20url%0A%7D%2C%0A%7D";
+  "https://gzsq4ssh.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22personal%22%5D%20%7B%0A%22name%22%3A%20name%2C%20%20%0A%22roles%22%3A%20roles%2C%0A%22introduction%22%3A%20introduction%2C%0A%22about%22%3A%20about%2C%0A%22skillsHeading%22%3AskillsHeading%2C%0A%22projectsHeading%22%3A%20projectsHeading%2C%0A%22projectsDescription%22%3A%20projectsDescription%2C%0A%22achievementsHeading%22%3AachievementsHeading%2C%0A%22achievementsDescription%22%3AachievementsDescription%2C%0A%22articlesHeading%22%3AarticlesHeading%2C%0A%22articlesDescription%22%3AarticlesDescription%2C%0A%22appsHeading%22%3AappsHeading%2C%0A%22appsDescription%22%3AappsDescription%2C%0A%22otherProjectsHeading%22%3AotherProjectsHeading%2C%0A%22otherProjectsDescription%22%3AotherProjectsDescription%2C%0A%22email%22%3Aemail%2C%0A%22phone%22%3Aphone%2C%0A%22skills%22%3A%20*%5B_type%20%3D%3D%20%22skills%22%5D%7B%0A%20%20%22id%22%3A%20_id%2C%0A%20%20%22title%22%3A%20title%2C%0A%20%20%22image%22%3A%20%20image.asset-%3Eurl%0A%7D%2C%0A%22projects%22%3A%20*%5B_type%20%3D%3D%20%22projects%22%5D%7B%0A%20%20%22id%22%3A%20_id%2C%0A%20%20%22title%22%3A%20title%2C%0A%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20%22description%22%3A%20description%2C%0A%20%20%22url%22%3A%20url%0A%7D%2C%0A%22achievements%22%3A%20*%5B_type%20%3D%3D%20%22achievements%22%5D%7B%0A%20%20%22id%22%3A%20_id%2C%0A%20%20%22title%22%3A%20title%2C%0A%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20%22description%22%3A%20description%2C%0A%20%20%22url%22%3A%20url%0A%7D%2C%0A%22apps%22%3A%20*%5B_type%20%3D%3D%20%22apps%22%5D%7B%0A%20%20%22id%22%3A%20_id%2C%0A%20%20%22title%22%3A%20title%2C%0A%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20%22url%22%3A%20url%0A%7D%2C%0A%22otherProjects%22%3A%20*%5B_type%20%3D%3D%20%22otherProjects%22%5D%7B%0A%20%20%22id%22%3A%20_id%2C%0A%20%20%22title%22%3A%20title%2C%0A%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20%22url%22%3A%20url%2C%0A%20%20%22description%22%3A%20description%2C%0A%20%20%22type%22%3A%20type%0A%7D%0A%7D";
 
 let about;
 let whoami = `<div class="command-result">`;
@@ -12,26 +12,26 @@ fetch(portfolioAPI)
   .then((data) => data.json())
   .then((outcome) => {
     // whoami command
-    const positions = outcome.result[0].position.split(",");
-    positions.forEach((who) => {
-      whoami += `<li class="data-li">${who}</li>`;
+    const roles = outcome.result[0].roles.split(",");
+    roles.forEach((role) => {
+      whoami += `<li class="data-li">${role}</li>`;
     });
     whoami += "</div>";
 
     // about command
-    about = `<div class="command-result"><p class="about-text">${outcome.result[0].AboutMeText}</p><div>`;
+    about = `<div class="command-result"><p class="about-text">${outcome.result[0].about}</p><div>`;
 
     // skills command
-    const mySkills = outcome.result[0].skills;
-    mySkills.forEach((skill) => {
+    const unformattedSkills = outcome.result[0].skills;
+    unformattedSkills.forEach((skill) => {
       skills += `<li class="data-li">${skill.title}</li>`;
     });
 
     skills += "</div>";
 
     // projects command
-    const myProjects = outcome.result[0].projects;
-    myProjects.forEach((project) => {
+    const unformattedProjects = outcome.result[0].projects;
+    unformattedProjects.forEach((project) => {
       projects += `<tr>
     <th class="data-name-th"><a href="${project.url}" target="_blank" class="data-link">${project.title}</a></th>
     <td class="data-description-td">${project.description}</td>
@@ -40,8 +40,8 @@ fetch(portfolioAPI)
     projects += "</table></div>";
 
     // achievements command
-    const myAchievements = outcome.result[0].achievements;
-    myAchievements.forEach((achievement) => {
+    const unformattedAchievements = outcome.result[0].achievements;
+    unformattedAchievements.forEach((achievement) => {
       achievements += `<tr>
     <th class="data-name-th"><a href="${achievement.url}" target="_blank" class="data-link">${achievement.title}</a></th>
     <td class="data-description-td">${achievement.description}</td>
@@ -50,7 +50,7 @@ fetch(portfolioAPI)
     achievements += "</table></div>";
 
     // contact command
-    const myContacts = [
+    const unformattedContacts = [
       {
         contactTitle: "email",
         contactPlace: outcome.result[0].email,
@@ -58,6 +58,10 @@ fetch(portfolioAPI)
       {
         contactTitle: "github",
         contactPlace: "@BrijenMakwana",
+      },
+      {
+        contactTitle: "hashnode",
+        contactPlace: "brijen.hashnode.dev",
       },
       {
         contactTitle: "instagram",
@@ -69,7 +73,7 @@ fetch(portfolioAPI)
       },
     ];
 
-    myContacts.forEach((item) => {
+    unformattedContacts.forEach((item) => {
       contact += `<dt class="data-dt">${item.contactTitle}<dt><dd class="data-dd"> - ${item.contactPlace}</dd>`;
     });
     contact += "</dl></div>";
