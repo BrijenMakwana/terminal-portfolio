@@ -1,13 +1,13 @@
 import {
-  whoami,
-  help,
-  about,
-  skills,
-  projects,
-  achievements,
-  myWebsite,
+  aboutSectionHTML,
+  whoAmISectionHTML,
+  skillsSectionHTML,
+  projectsSectionHTML,
+  achievementsSectionHTML,
+  contactSectionHTML,
+  helpSectionHTML,
   website,
-  contact,
+  websiteSectionHTML,
 } from "./commands.js";
 
 const command = document.getElementById("command");
@@ -36,41 +36,41 @@ command.addEventListener("keydown", (e) => {
 
     switch (userInput.trim().toLowerCase()) {
       case "help":
-        commandResults.innerHTML += help;
+        commandResults.innerHTML += helpSectionHTML;
         addToCommandHistory(userInput);
         break;
       case "whoami":
-        commandResults.innerHTML += whoami;
+        commandResults.innerHTML += whoAmISectionHTML;
         addToCommandHistory(userInput);
         break;
       case "about":
-        commandResults.innerHTML += about;
+        commandResults.innerHTML += aboutSectionHTML;
         addToCommandHistory(userInput);
         break;
       case "skills":
-        commandResults.innerHTML += skills;
+        commandResults.innerHTML += skillsSectionHTML;
         addToCommandHistory(userInput);
         break;
       case "projects":
-        commandResults.innerHTML += projects;
+        commandResults.innerHTML += projectsSectionHTML;
         addToCommandHistory(userInput);
         break;
       case "achievements":
-        commandResults.innerHTML += achievements;
+        commandResults.innerHTML += achievementsSectionHTML;
         addToCommandHistory(userInput);
         break;
       case "website":
-        commandResults.innerHTML += website;
+        commandResults.innerHTML += websiteSectionHTML;
         setTimeout(() => {
           const anchor = document.createElement("a");
-          anchor.href = myWebsite;
+          anchor.href = website;
           anchor.target = "_blank";
           anchor.click();
         }, 2000);
         addToCommandHistory(userInput);
         break;
       case "contact":
-        commandResults.innerHTML += contact;
+        commandResults.innerHTML += contactSectionHTML;
         addToCommandHistory(userInput);
         break;
       case "clear":
