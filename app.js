@@ -11,86 +11,167 @@ import {
 } from "./commands.js";
 
 const command = document.getElementById("command");
-const commandResults = document.getElementById("command-results");
+const commandOutput = document.getElementById("command-output");
+
 const commandHistory = [];
 let historyIndex = 0;
 
-document.addEventListener("keydown", () => command.focus());
+const focusOnCommandInput = () => {
+  command.focus();
+};
 
-command.addEventListener("keydown", (e) => {
-  if (e.which == 38 && historyIndex > 0) {
-    historyIndex--;
-    e.target.value = commandHistory[historyIndex];
-  } else if (e.which == 40 && historyIndex < commandHistory.length - 1) {
-    historyIndex++;
-    e.target.value = commandHistory[historyIndex];
-  } else if (e.which == 13) {
-    const userInput = e.target.value;
+document.addEventListener("keydown", focusOnCommandInput);
 
-    const typedCommand = `<div class="input-container">
+const downKeyIsPressed = (event) => {
+  return event.which == 38 && historyIndex > 0;
+};
+
+const upKeyIsPressed = (event) => {
+  return event.which == 40 && historyIndex < commandHistory.length - 1;
+};
+
+const clearKeyIsPressed = (event) => {
+  return (event.metaKey || event.ctrlKey) && event.which == 75;
+};
+
+const getPreviouslyExecutedCommand = () => {
+  historyIndex--;
+  command.value = commandHistory[historyIndex];
+};
+
+const getNextExecutedCommand = () => {
+  historyIndex++;
+  command.value = commandHistory[historyIndex];
+};
+
+const enterKeyIsPressed = (event) => {
+  return event.which == 13;
+};
+
+const showExecutedCommand = () => {
+  const typedCommand = `<div class="input-container">
         <span class="input-label">></span>
-        <span class="input-command">${userInput}</span>
+        <span class="input-command">${command.value}</span>
       </div>`;
 
-    commandResults.innerHTML += typedCommand;
+  commandOutput.innerHTML += typedCommand;
+};
 
-    switch (userInput.trim().toLowerCase()) {
-      case "help":
-        commandResults.innerHTML += helpSectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "whoami":
-        commandResults.innerHTML += whoAmISectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "about":
-        commandResults.innerHTML += aboutSectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "skills":
-        commandResults.innerHTML += skillsSectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "projects":
-        commandResults.innerHTML += projectsSectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "achievements":
-        commandResults.innerHTML += achievementsSectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "website":
-        commandResults.innerHTML += websiteSectionHTML;
-        setTimeout(() => {
-          const anchor = document.createElement("a");
-          anchor.href = website;
-          anchor.target = "_blank";
-          anchor.click();
-        }, 2000);
-        addToCommandHistory(userInput);
-        break;
-      case "contact":
-        commandResults.innerHTML += contactSectionHTML;
-        addToCommandHistory(userInput);
-        break;
-      case "clear":
-        emptyTerminal();
-        addToCommandHistory(userInput);
-        break;
-      default:
-        commandResults.innerHTML += `<div class="command-result"><span class="command-not-found">${e.target.value}</span>: command not found. Type 'help' to view a list of available commands.</div>`;
-    }
-    resetHistoryIndex();
-    e.target.value = "";
-    window.scrollTo(0, document.body.scrollHeight);
-  } else if ((e.metaKey || e.ctrlKey) && e.which == 75) {
+const redirectToGUIWebsite = () => {
+  setTimeout(() => {
+    const anchor = document.createElement("a");
+    anchor.href = website;
+    anchor.target = "_blank";
+    anchor.click();
+  }, 2000);
+};
+
+const showCommandNotFound = () => {
+  return `<div class="command-result">
+          <span class="command-not-found">${command.value}</span>
+          : command not found. Type 'help' to view a list of available commands.
+        </div>`;
+};
+
+const emptyCommandInput = () => {
+  command.value = "";
+};
+
+const scrollToBottomEnd = () => {
+  window.scrollTo(0, document.body.scrollHeight);
+};
+
+const showCommandOutput = (output) => {
+  commandOutput.innerHTML += output;
+};
+
+const executeCommand = () => {
+  const userEnteredCommand = command.value.trim().toLowerCase();
+
+  switch (userEnteredCommand) {
+    case "help":
+      showCommandOutput(helpSectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "whoami":
+      showCommandOutput(whoAmISectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "about":
+      showCommandOutput(aboutSectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "skills":
+      showCommandOutput(skillsSectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "projects":
+      showCommandOutput(projectsSectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "achievements":
+      showCommandOutput(achievementsSectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "website":
+      showCommandOutput(websiteSectionHTML);
+      addCommandToHistory();
+
+      redirectToGUIWebsite();
+
+      break;
+    case "contact":
+      showCommandOutput(contactSectionHTML);
+      addCommandToHistory();
+
+      break;
+    case "clear":
+      emptyTerminal();
+      addCommandToHistory();
+      break;
+    default:
+      commandOutput.innerHTML += showCommandNotFound();
+  }
+  resetHistoryIndex();
+  emptyCommandInput();
+
+  scrollToBottomEnd();
+  return;
+};
+
+const evaluateCommandInput = (event) => {
+  if (downKeyIsPressed(event)) {
+    getPreviouslyExecutedCommand();
+    return;
+  }
+
+  if (upKeyIsPressed(event)) {
+    getNextExecutedCommand();
+    return;
+  }
+
+  if (enterKeyIsPressed(event)) {
+    showExecutedCommand();
+    executeCommand();
+    return;
+  }
+
+  if (clearKeyIsPressed(event)) {
     resetHistoryIndex();
     emptyTerminal();
   }
-});
+};
 
-const addToCommandHistory = (userCommand) => {
-  commandHistory.push(userCommand);
+command.addEventListener("keydown", evaluateCommandInput);
+
+const addCommandToHistory = () => {
+  commandHistory.push(command.value);
 };
 
 const resetHistoryIndex = () => {
@@ -98,5 +179,5 @@ const resetHistoryIndex = () => {
 };
 
 const emptyTerminal = () => {
-  commandResults.innerHTML = "";
+  commandOutput.innerHTML = "";
 };
