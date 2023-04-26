@@ -90,7 +90,7 @@ const getAchievements = () => {
   return renderData;
 };
 
-const getContect = () => {
+const getContact = () => {
   let renderData = `<div class="command-result"><dl>`;
 
   const contacts = [
@@ -199,7 +199,7 @@ const getPortfolio = () => {
       skillsSectionHTML = getSkills();
       projectsSectionHTML = getProjects();
       achievementsSectionHTML = getAchievements();
-      contactSectionHTML = getContect();
+      contactSectionHTML = getContact();
       helpSectionHTML = getHelp();
       websiteSectionHTML = getWebsite();
     })
